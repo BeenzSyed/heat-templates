@@ -7,8 +7,8 @@ resources:
     properties:
       context:
         region_name: DFW
-      template:
-        get_file: https://raw.githubusercontent.com/BeenzSyed/heat-templates/updatetemp/dev/region_stack.template
+      template: { get_file: 'https://raw.githubusercontent.com/BeenzSyed/heat-templates/updatetemp/dev/region_stack.template' }
+        #get_file: https://raw.githubusercontent.com/BeenzSyed/heat-templates/updatetemp/dev/region_stack.template
       timeout: 60
       parameters:
         region: DFW

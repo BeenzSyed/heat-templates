@@ -1,0 +1,23 @@
+heat_template_version: 2013-05-23
+
+resources:
+
+  DFW_stack:
+    type: OS::Heat::Stack
+    properties:
+      context:
+        region_name: DFW
+      template: { get_file: 'https://raw.githubusercontent.com/BeenzSyed/heat-templates/updatetemp/dev/region_stack.template' }
+      timeout: 60
+      parameters:
+        region: DFW
+
+  ORD_stack:
+    type: OS::Heat::Stack
+    properties:
+      context:
+        region_name: ORD
+      template: { get_file: 'https://raw.githubusercontent.com/BeenzSyed/heat-templates/updatetemp/dev/region_stack.template' }
+      timeout: 60
+      parameters:
+        region: ORD
