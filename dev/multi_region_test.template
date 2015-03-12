@@ -1,12 +1,12 @@
 heat_template_version: 2013-05-23
 
 resources:
-    DFW_stack:
-        type: OS::Heat::Stack
-        properties:
-            context:
-                region_name: DFW
-            template: https://github.com/BeenzSyed/heat-templates/blob/updatetemp/dev/region_stack.template
-            timeout: 60
-            parameters:
-                region: DFW
+  DFW_stack:
+    type: OS::Heat::Stack
+      properties:
+        context:
+          region_name: DFW
+        template: https://github.com/BeenzSyed/heat-templates/blob/updatetemp/dev/region_stack.template
+        timeout: 60
+        parameters:
+          region: DFW
