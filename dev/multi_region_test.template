@@ -2,6 +2,8 @@ heat_template_version: 2013-05-23
 
 parameters:
   region_template:
+    type: string
+    description: region template
     default: |
       heat_template_version: 2013-05-23
       parameters:
