@@ -23,10 +23,10 @@ parameters:
 resources:
   DFW_stack:
     type: OS::Heat::Stack
-      properties:
-        context:
-          region_name: DFW
-        template: { get_param: region_template }
-        timeout: 60
-        parameters:
-          region: DFW
+    properties:
+      context:
+        region_name: DFW
+      template: { get_param: region_template }
+      timeout: 60
+      parameters:
+        region: DFW
