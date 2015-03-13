@@ -1,14 +1,34 @@
 heat_template_version: 2013-05-23
 
-resources:
+parameters:
+  region_template:
+    type: string
+    description: region template
+    default: |
+      heat_template_version: 2013-05-23
+      parameters:
+        region:
+          type: string
+      resources:
+        resource1:
+          type: OS::Nova::Server
+          properties:
+            image: Ubuntu 14.04 LTS (Trusty Tahr) (PVHVM)
+            flavor: 2 GB Performance
+            name:
+              str_replace:
+                template: stack-server-region
+                params:
+                  stack: { get_param: "OS::stack_name" }
+                  region: { get_param: region }
 
+resources:
   DFW_stack:
     type: OS::Heat::Stack
     properties:
       context:
         region_name: DFW
-      template: { get_file: 'https://raw.githubusercontent.com/BeenzSyed/heat-templates/updatetemp/dev/region_stack.template' }
-        #get_file: https://raw.githubusercontent.com/BeenzSyed/heat-templates/updatetemp/dev/region_stack.template
+      template: { get_param: region_template }
       timeout: 60
       parameters:
         region: DFW
@@ -18,8 +38,7 @@ resources:
     properties:
       context:
         region_name: ORD
-      template:
-        get_file: https://raw.githubusercontent.com/BeenzSyed/heat-templates/updatetemp/dev/region_stack.template
+      template: { get_param: region_template }
       timeout: 60
       parameters:
         region: ORD
@@ -29,8 +48,7 @@ resources:
     properties:
       context:
         region_name: IAD
-      template:
-        get_file: https://raw.githubusercontent.com/BeenzSyed/heat-templates/updatetemp/dev/region_stack.template
+      template: { get_param: region_template }
       timeout: 60
       parameters:
         region: IAD
@@ -40,8 +58,7 @@ resources:
     properties:
       context:
         region_name: HKG
-      template:
-        get_file: https://raw.githubusercontent.com/BeenzSyed/heat-templates/updatetemp/dev/region_stack.template
+      template: { get_param: region_template }
       timeout: 60
       parameters:
         region: HKG
@@ -51,8 +68,7 @@ resources:
     properties:
       context:
         region_name: SYD
-      template:
-        get_file: https://raw.githubusercontent.com/BeenzSyed/heat-templates/updatetemp/dev/region_stack.template
+      template: { get_param: region_template }
       timeout: 60
       parameters:
         region: SYD
